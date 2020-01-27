@@ -11,7 +11,7 @@ jobs:
       - name: Compile Python
         run: |
           set -x
-          sudo apt-get install gcc make curl
+          sudo apt-get install gcc make curl zlib1g-dev
           curl -L -o /tmp/python-src.tgz https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tgz 
           tar -xvf /tmp/python-src.tgz -C /tmp
           cd /tmp/Python-3.6.5
