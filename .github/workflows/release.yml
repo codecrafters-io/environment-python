@@ -17,5 +17,6 @@ jobs:
           cd /tmp/Python-3.6.5
           ./configure --with-ensurepip=install
           make -j 8
-          make test
+          # TODO: make altinstall
+          make install
           ls -lah
