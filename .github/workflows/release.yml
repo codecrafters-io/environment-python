@@ -1,0 +1,23 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - run: Compile Python
+      - run: |
+          sudo apt-get install gcc make curl
+          curl -L -o /tmp/python-src.tgz https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tgz 
+          tag -xvf /tmp/python-src.tgz -C /tmp
+          cd /tmp/Python-3.6.5
+          ./configure
+          make -j 8
+          make test
+          ls -lah
