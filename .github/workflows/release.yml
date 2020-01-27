@@ -1,9 +1,6 @@
 name: Publish
 
-on:
-  push:
-    tags:
-      - "v*"
+on: push
 
 jobs:
   release:
@@ -17,7 +14,7 @@ jobs:
           curl -L -o /tmp/python-src.tgz https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tgz 
           tag -xvf /tmp/python-src.tgz -C /tmp
           cd /tmp/Python-3.6.5
-          ./configure
+          ./configure --with-ensurepip=install
           make -j 8
           make test
           ls -lah
